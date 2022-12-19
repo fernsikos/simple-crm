@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/models/user.class';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dialog-add-user.component.scss']
 })
 export class DialogAddUserComponent implements OnInit {
+
+  user = new User();
 
   constructor() { }
 
