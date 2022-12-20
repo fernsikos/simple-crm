@@ -1,3 +1,27 @@
 mat-form-field {
     width: 100%;
 }
+
+.input-container {
+    display: flex;
+}
+
+.card-container {
+    position: relative;
+
+    .bar {
+        position: absolute;
+        left: -24px;
+        right: -24px;
+        top: -24px;
+        width: calc(100% + 48px);
+    }
+}
+
+:host {
+    ::ng-deep {
+        .mat-form-field-infix {
+            display: inline-flex;
+        }
+    }
+}
