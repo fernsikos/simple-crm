@@ -19,14 +19,14 @@
             <input [(ngModel)]="user.email" [disabled]="loading" matInput placeholder="Email">
         </mat-form-field>
         
-        <!-- <div>
+        <div>
             <mat-form-field appearance="outline" class="display">
                 <mat-label>Birthday</mat-label>
                 <input [(ngModel)]="birthdate" [disabled]="loading" matInput placeholder="Birthday" [matDatepicker]="picker1" >
                 <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>
-        </div> -->
+        </div>
     </div>
     <div mat-dialog-actions>
         <button mat-button [disabled]="loading" (click)="this.dialogRef.close()">Cancel</button>

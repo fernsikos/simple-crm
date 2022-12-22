@@ -14,7 +14,7 @@ import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.co
 export class UserDetailComponent implements OnInit {
 
   userId: string = '';
-  user: User = new User;
+  user: User = new User();
 
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog,) { }
 
@@ -39,12 +39,14 @@ export class UserDetailComponent implements OnInit {
 
   openEditAdressDialog() {
     const dialog = this.dialog.open(DialogEditAddressComponent);
-    dialog.componentInstance.user = this.user;
+    dialog.componentInstance.userId = this.userId;
+    dialog.componentInstance.user = new User(this.user.toJSON());
   }
 
   openEditUserDialog() {
     const dialog = this.dialog.open(DialogEditUserComponent);
-    dialog.componentInstance.user = this.user;
+    dialog.componentInstance.userId = this.userId;
+    dialog.componentInstance.user = new User(this.user.toJSON());
 
   }
 
