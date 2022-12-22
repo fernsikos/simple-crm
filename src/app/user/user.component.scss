@@ -1,6 +1,14 @@
 mat-card {
     padding-left: 0;
     padding-right: 0;
+    position: relative;
+
+    .bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
 }
 .add-btn {
     position: absolute;

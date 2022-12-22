@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -13,6 +14,7 @@ export class UserComponent implements OnInit {
 
   user: User = new User();
   userData = [];
+  loading: boolean = true;
 
   constructor(public dialog: MatDialog, private firestore: AngularFirestore) { }
 
@@ -24,6 +26,7 @@ export class UserComponent implements OnInit {
       console.log('Recieved changes' + changes)
       this.userData = changes;
       console.log(this.userData)
+      this.loading = false;
     })
   }
 

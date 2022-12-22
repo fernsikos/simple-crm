@@ -1,0 +1,42 @@
+.user-detail-header {
+    min-height: 250px;
+    background-color: rgb(30, 111, 178);
+    color: white;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+
+    mat-card-content {
+        display: flex;
+        align-items: center;
+
+        .user-details {
+            margin-left: 16px;
+
+            h2 {
+                margin-bottom: 0;
+            }
+        }
+
+
+        img {
+            height: 100px;
+            width: 100px;
+            border-radius: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+.user-detail-content {
+   position: relative;
+
+   
+
+}
+
+.more-icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+   }
