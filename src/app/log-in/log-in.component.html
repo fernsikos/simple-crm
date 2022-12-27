@@ -1,1 +1,80 @@
-<div class="container"></div>
+<!-- <div class="card-container">
+    <mat-progress-bar class="bar" mode="indeterminate"></mat-progress-bar>
+    <h1 mat-dialog-title>Add User</h1>
+    <div mat-dialog-content>
+        <div class="input-container">
+            <mat-form-field class="mr-16" appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input  matInput placeholder="Firstname">
+                
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Last Name">
+       
+            </mat-form-field>
+        </div>
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input  matInput placeholder="Email">
+        </mat-form-field>
+        
+        <div>
+            <mat-form-field appearance="outline" class="display">
+                <mat-label>Birthday</mat-label>
+                <input matInput placeholder="Birthday" [matDatepicker]="picker1" >
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Street + House No.</mat-label>
+                <input matInput placeholder="Address">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline" class="mr-16">
+                <mat-label>Zip Code</mat-label>
+                <input matInput placeholder="Zip Code">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>City</mat-label>
+                <input matInput placeholder="City">
+            </mat-form-field>
+        </div>
+    </div>
+    
+</div> -->
+<div class="container">
+    <mat-card>
+        <div class="logo-container" style="margin-bottom: 16px;">
+            <img src="assets/img/Logo-Blue.png" alt="">
+          </div>
+        <mat-card-content>
+            <h2>Log In</h2>
+            <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input matInput placeholder="Username" #userName required>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <!-- <input matInput placeholder="Password" ##userPassword required> -->
+                <input matInput [type]="hide ? 'password' : 'text'" #userPassword required>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <div class="button-container">
+                <a mat-raised-button value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">Log in</a>
+                <span>or</span>
+                <a mat-raised-button (click)="authService.GoogleAuth()">Log in with Google</a>
+            </div>
+            <div class="alternate">
+                <span routerLink="/forgot-password">Forgot Password</span>
+                <span class="redirect" routerLink="/signin"> Sign Up</span>
+              </div>
+        </mat-card-content>
+    </mat-card>
+
+</div>

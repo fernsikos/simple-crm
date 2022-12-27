@@ -25,7 +25,7 @@ export class DialogAddUserComponent implements OnInit {
     this.user.birthdate = this.birthdate.getTime()
     this.loading = true;
     this.firestore
-      .collection('users')
+      .collection('saved-users')
       .add(this.user.toJSON())
       .then((result:any) => {
         console.log('Added user succsesful', result)

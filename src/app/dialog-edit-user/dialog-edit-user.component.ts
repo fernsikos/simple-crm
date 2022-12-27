@@ -24,7 +24,7 @@ export class DialogEditUserComponent implements OnInit {
     this.user.birthdate = this.birthdate.getTime()
     this.loading = true;
     this.firestore
-    .collection('users')
+    .collection('saved-users')
     .doc(this.userId)
     .update(this.user.toJSON())
     .then(() => {

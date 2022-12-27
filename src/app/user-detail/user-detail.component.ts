@@ -28,7 +28,7 @@ export class UserDetailComponent implements OnInit {
 
   getUser() {
     this.firestore
-    .collection('users')
+    .collection('saved-users')
     .doc(this.userId)
     .valueChanges()
     .subscribe((user) => {

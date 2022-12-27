@@ -17,7 +17,6 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { FormsModule } from '@angular/forms';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
@@ -30,6 +29,11 @@ import {MatMenuModule} from '@angular/material/menu';
 import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-address.component';
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 import { LogInComponent } from './log-in/log-in.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { VeryfyEmailComponent } from './veryfy-email/veryfy-email.component';
+import { AuthService } from "./shared/services/auth.service";
 
 
 
@@ -42,7 +46,10 @@ import { LogInComponent } from './log-in/log-in.component';
     UserDetailComponent,
     DialogEditAddressComponent,
     DialogEditUserComponent,
-    LogInComponent
+    LogInComponent,
+    SignInComponent,
+    ForgotPasswordComponent,
+    VeryfyEmailComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +65,7 @@ import { LogInComponent } from './log-in/log-in.component';
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    ReactiveFormsModule,
     FormsModule,
     MatCardModule,
     MatProgressBarModule,
@@ -67,7 +75,7 @@ import { LogInComponent } from './log-in/log-in.component';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
