@@ -5,21 +5,24 @@
           </div>
         <mat-card-content>
             <h2>Sign Up</h2>
-            <mat-form-field appearance="outline">
-                <mat-label>Email Address</mat-label>
-                <input matInput placeholder="Username" [formControl]="email" #userEmail required>
-                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Password</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" #userPwd required>
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-            </mat-form-field>
+            <form #singup="ngForm" (ngSubmit)="signupUser(singup.value)">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email Address</mat-label>
+                    <input matInput placeholder="Username" [formControl]="email" #userEmail required>
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" #userPwd required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </form>
             <div class="button-container">
-                <a mat-raised-button value="Sign Up"
-                (click)="authService.SignUp(userEmail.value, userPwd.value)">Register</a>
+                <button mat-raised-button value="Sign Up" [disabled]="singup.invalid"
+                (click)="signupUser(singup.value)"
+                >Register</button>
             </div>
             <div class="alternate">
                 <span class="redirect" routerLink="/login"> Log In</span>

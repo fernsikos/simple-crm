@@ -25,4 +25,9 @@ export class SignInComponent implements OnInit {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
+  signupUser(item) {
+    console.log(item)
+  }
+
 }
+// (click)="authService.SignUp(userEmail.value, userPwd.value)"
