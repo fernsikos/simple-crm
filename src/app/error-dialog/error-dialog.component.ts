@@ -12,14 +12,20 @@ export class ErrorDialogComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: string, public dialogRef: MatDialogRef<ErrorDialogComponent>) {
     
-    this.errorMessage = data.toString().substring(25, 81);
+    // this.errorMessage = data.toString().substring(25, 81);
     
-    console.log(typeof(this.errorMessage))
-    console.log(this.errorMessage)
-
+    if(data.toString().includes('The email address is already in use by another account.')) {
+      this.errorMessage = data.toString().substring(25, 81);
+    } else if (data.toString().includes('There is no user record corresponding to this identifier.')) {
+      this.errorMessage = 'There is no user found with this e-mail address.'
+    } else if (data.toString().includes('The password is invalid or the user does not have a password.')) {
+      this.errorMessage = 'The insert password is wrong. Please try it again'
+    }
    }
 
   ngOnInit(): void {
   }
 
 }
+
+

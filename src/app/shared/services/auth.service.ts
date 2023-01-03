@@ -6,6 +6,7 @@ import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
+
 import { Router } from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import { DialogAddUserComponent } from 'src/app/dialog-add-user/dialog-add-user.component';
@@ -48,7 +49,7 @@ export class AuthService {
         });
       })
       .catch((error) => {
-        window.alert(error.message);
+        this.dialog.open(ErrorDialogComponent, {data: error})
       });
   }
   // Sign up with email/password
@@ -81,7 +82,7 @@ export class AuthService {
         window.alert('Password reset email sent, check your inbox.');
       })
       .catch((error) => {
-        window.alert(error);
+        this.dialog.open(ErrorDialogComponent, {data: error})
       });
   }
   // Returns true when user is looged in and email is verified
@@ -128,6 +129,7 @@ export class AuthService {
   // Sign out
   SignOut() {
     return this.afAuth.signOut().then(() => {
+      // this.isLoggedIn = false
       localStorage.removeItem('user');
       this.router.navigate(['']);
     });
