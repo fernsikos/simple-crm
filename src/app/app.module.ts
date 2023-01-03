@@ -34,6 +34,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { VeryfyEmailComponent } from './veryfy-email/veryfy-email.component';
 import { AuthService } from "./shared/services/auth.service";
+import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 
 
 
@@ -49,7 +50,8 @@ import { AuthService } from "./shared/services/auth.service";
     LogInComponent,
     SignInComponent,
     ForgotPasswordComponent,
-    VeryfyEmailComponent
+    VeryfyEmailComponent,
+    ErrorDialogComponent
   ],
   imports: [
     BrowserModule,

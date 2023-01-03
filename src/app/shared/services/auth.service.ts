@@ -7,12 +7,16 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
+import { DialogAddUserComponent } from 'src/app/dialog-add-user/dialog-add-user.component';
+import { ErrorDialogComponent } from 'src/app/error-dialog/error-dialog.component';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   userData: any; // Save logged in user data
   constructor(
+    public dialog: MatDialog,
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
@@ -58,7 +62,7 @@ export class AuthService {
         this.SetUserData(result.user);
       })
       .catch((error) => {
-        window.alert(error.message);
+        this.dialog.open(ErrorDialogComponent, {data: error})
       });
   }
   // Send email verfificaiton when new user sign up
