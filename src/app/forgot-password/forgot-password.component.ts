@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {FormControl, NgForm, Validators} from '@angular/forms';
 import { AuthService } from "../shared/services/auth.service";
 
 @Component({
@@ -9,16 +9,15 @@ import { AuthService } from "../shared/services/auth.service";
 })
 export class ForgotPasswordComponent implements OnInit {
 
+  @ViewChild('forgotPasswordForm') forgotPasswordForm: NgForm;
+
   constructor(public authService: AuthService) { }
   public email = new FormControl('', [Validators.required, Validators.email]);
   ngOnInit(): void {
   }
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
+   resentPassword() {
+    this.authService.ForgotPassword(this.forgotPasswordForm.value.passwordResetEmail)
+    console.log('test')
+   }
 }

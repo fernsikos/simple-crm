@@ -10,7 +10,7 @@ import { VeryfyEmailComponent } from './veryfy-email/veryfy-email.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/signin', pathMatch: 'full' },
+  {path: '', redirectTo: '/login', pathMatch: 'full' },
   {path: 'dashboard', component: DashboardComponent},
   {path: 'user', component: UserComponent},
   {path: 'user/:id', component: UserDetailComponent},

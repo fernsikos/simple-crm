@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {FormControl, NgForm, Validators} from '@angular/forms';
 import { AuthService } from "../shared/services/auth.service";
 
 @Component({
@@ -11,23 +11,25 @@ export class SignInComponent implements OnInit {
   hide = true;
   public email = new FormControl('', [Validators.required, Validators.email]);
 
+  @ViewChild('signupForm') signupForm: NgForm;
+
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
     
   }
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
+  // getErrorMessage() {
+  //   if (this.email.hasError('required')) {
+  //     return 'You must enter a value';
+  //   }
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
+  //   return this.email.hasError('email') ? 'Not a valid email' : '';
+  // }
 
-  signupUser(item) {
-    console.log(item)
+  signupUser() {
+    this.authService.SignUp(this.signupForm.value.userEmail, this.signupForm.value.userPwd)
+    
   }
 
 }
-// (click)="authService.SignUp(userEmail.value, userPwd.value)"

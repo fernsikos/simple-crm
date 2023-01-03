@@ -5,25 +5,24 @@
           </div>
         <mat-card-content>
             <h2>Sign Up</h2>
-            <form #singup="ngForm" (ngSubmit)="signupUser(singup.value)">
+            <form #signupForm="ngForm" (ngSubmit)="signupUser()">
                 <mat-form-field appearance="outline">
                     <mat-label>Email Address</mat-label>
-                    <input matInput placeholder="Username" [formControl]="email" #userEmail required>
-                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                    <input matInput placeholder="Email Address" email name="userEmail" ngModel #userEmail="ngModel" required>
+                    <mat-error *ngIf="email.invalid">Please enter a valid e-mail<address></address></mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                     <mat-label>Password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" #userPwd required>
+                    <input matInput [type]="hide ? 'password' : 'text'" name="userPwd" ngModel #userPwd="ngModel" required>
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
                 </mat-form-field>
+                <div class="button-container">
+                    <button mat-raised-button value="Sign Up" type="submit" [disabled]="signupForm.invalid"
+                    >Register</button>
+                </div>
             </form>
-            <div class="button-container">
-                <button mat-raised-button value="Sign Up" [disabled]="singup.invalid"
-                (click)="signupUser(singup.value)"
-                >Register</button>
-            </div>
             <div class="alternate">
                 <span class="redirect" routerLink="/login"> Log In</span>
               </div>
