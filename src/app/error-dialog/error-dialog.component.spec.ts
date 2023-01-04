@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { RouterModule } from '@angular/router';
 
 import { ErrorDialogComponent } from './error-dialog.component';
 
@@ -8,9 +10,14 @@ describe('ErrorDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ErrorDialogComponent ]
+      imports: [
+        RouterModule.forRoot([]),
+        MatDialogModule,
+        MAT_DIALOG_DATA,
+      ],
+      declarations: [ErrorDialogComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ErrorDialogComponent);
     component = fixture.componentInstance;

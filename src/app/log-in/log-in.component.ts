@@ -10,6 +10,7 @@ import { AuthService } from "../shared/services/auth.service";
 export class LogInComponent implements OnInit {
 
   hide = true;
+  loading = false;
   @ViewChild('loginForm') loginform: NgForm;
 
   constructor(public authService: AuthService) { }
@@ -17,9 +18,10 @@ export class LogInComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  loginUser() {
-    this.authService.SignIn(this.loginform.value.userName, this.loginform.value.userPassword)
-    
+ async  loginUser() {
+    this.loading = true;
+    await this.authService.SignIn(this.loginform.value.userName, this.loginform.value.userPassword)
+    this.loading = false
   }
 
 }

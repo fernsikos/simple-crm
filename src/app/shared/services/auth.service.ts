@@ -51,6 +51,7 @@ export class AuthService {
       .catch((error) => {
         this.dialog.open(ErrorDialogComponent, {data: error})
       });
+      
   }
   // Sign up with email/password
   SignUp(email: string, password: string) {
@@ -62,6 +63,7 @@ export class AuthService {
         this.SendVerificationMail();
         this.SetUserData(result.user);
       })
+  
       .catch((error) => {
         this.dialog.open(ErrorDialogComponent, {data: error})
       });

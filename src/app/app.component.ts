@@ -8,7 +8,7 @@ import { AuthService } from "./shared/services/auth.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'simple-crm';
+
   
 
   constructor(public authService: AuthService) {

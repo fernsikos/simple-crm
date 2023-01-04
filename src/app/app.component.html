@@ -1,5 +1,5 @@
 <mat-drawer-container class="mat-drawer-container" autosize>
-  <mat-drawer #drawer class="sidenav" mode="side" [opened]="true"  *ngIf="this.authService.isLoggedIn === true">
+  <mat-drawer #drawer class="sidenav" mode="side" [opened]="authService.isLoggedIn && true">
     <div class="logo-container">
       <img src="assets/img/Logo-Blue.png" alt="">
     </div>
@@ -12,10 +12,10 @@
   </mat-drawer>
   <div class="sidenav-content">
     <mat-toolbar  *ngIf="this.authService.isLoggedIn === true">
-      <!-- <button mat-icon-button (click)="drawer.toggle()" class="example-icon"
+      <button mat-icon-button (click)="drawer.toggle()" class="example-icon"
         aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
-      </button> -->
+      </button>
       <span>SimpleCRM</span>
     </mat-toolbar>
 

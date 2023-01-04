@@ -10,6 +10,7 @@ import { AuthService } from "../shared/services/auth.service";
 export class SignInComponent implements OnInit {
   hide = true;
   public email = new FormControl('', [Validators.required, Validators.email]);
+  loading = false;
 
   @ViewChild('signupForm') signupForm: NgForm;
 
@@ -27,9 +28,10 @@ export class SignInComponent implements OnInit {
   //   return this.email.hasError('email') ? 'Not a valid email' : '';
   // }
 
-  signupUser() {
-    this.authService.SignUp(this.signupForm.value.userEmail, this.signupForm.value.userPwd)
-    
+  async signupUser() {
+    this.loading = true;
+    await this.authService.SignUp(this.signupForm.value.userEmail, this.signupForm.value.userPwd)
+    this.loading = false;
   }
 
 }
